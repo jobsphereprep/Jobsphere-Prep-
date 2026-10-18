@@ -22,5 +22,18 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Install requirements
+        run: pip install -r requirements.txt
+
       - name: Check latest YouTube video
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: python scripts/youtube_mcq.py
+
+      - name: Save generated questions
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add questions.json
+          git diff --cached --quiet || git commit -m "Update YouTube MCQs"
+          git push

@@ -1,21 +1,356 @@
+
 <!doctype html>
-<html lang="bn"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>JobSphere Prep</title>
-<style>
-body{margin:0;font-family:Arial,"Noto Sans Bengali",sans-serif;background:#f4f7fb;color:#182235;line-height:1.6}header,footer{background:#12213a;color:white;padding:18px 5%}header{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}.brand{font-size:24px;font-weight:bold}button,select{padding:10px 14px;border:0;border-radius:9px;cursor:pointer;font:inherit}button{background:#3157d5;color:white;font-weight:bold}.wrap{max-width:1000px;margin:auto;padding:28px 5%}.hero{background:linear-gradient(120deg,#12213a,#3157d5);color:white;padding:50px 5%}.hero h1{font-size:clamp(30px,5vw,52px);line-height:1.15}.card{background:white;padding:22px;border-radius:16px;margin:14px 0;box-shadow:0 4px 20px #11224412}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}.muted{color:#64748b}.question{padding:14px 0;border-bottom:1px solid #e4e9f2}.question label{display:block;padding:6px}.result{display:none;background:#e9f8f3;padding:15px;border-radius:10px;margin-top:14px}a{color:inherit}.lang{background:white;color:#12213a}@media(max-width:600px){.hero{padding:30px 5%}}
-</style></head><body>
-<header><div class="brand">JobSphere Prep 🎓</div><button class="lang" id="lang">বাংলা | English</button></header>
-<section class="hero"><div class="wrap"><h1 data-bn="প্রস্তুতি হোক পরিকল্পিত, আত্মবিশ্বাস হোক দৃঢ়।" data-en="Prepare with a plan. Build real confidence.">প্রস্তুতি হোক পরিকল্পিত, আত্মবিশ্বাস হোক দৃঢ়।</h1><p data-bn="BCS ও চাকরির পরীক্ষার জন্য ভিডিও ক্লাস, অনুশীলন এবং মডেল টেস্ট—এক জায়গায়।" data-en="Video lessons, practice and model tests for BCS and job exams—all in one place.">BCS ও চাকরির পরীক্ষার জন্য ভিডিও ক্লাস, অনুশীলন এবং মডেল টেস্ট—এক জায়গায়।</p><a href="#test"><button data-bn="মডেল টেস্ট দিন" data-en="Take a Model Test">মডেল টেস্ট দিন</button></a> <a href="https://youtube.com/@jobsphereprep" target="_blank"><button data-bn="YouTube চ্যানেল" data-en="YouTube Channel">YouTube চ্যানেল</button></a></div></section>
-<main class="wrap"><section id="about"><h2 data-bn="আমাদের সম্পর্কে" data-en="About Us">আমাদের সম্পর্কে</h2><p data-bn="JobSphere Prep হলো বিসিএস ও চাকরির পরীক্ষার্থীদের প্রস্তুতির জন্য একটি শিক্ষামূলক উদ্যোগ।" data-en="JobSphere Prep supports candidates preparing for BCS and other competitive exams.">JobSphere Prep হলো বিসিএস ও চাকরির পরীক্ষার্থীদের প্রস্তুতির জন্য একটি শিক্ষামূলক উদ্যোগ।</p></section>
-<section id="videos"><h2 data-bn="ভিডিও ক্লাস" data-en="Video Classes">ভিডিও ক্লাস</h2><div class="grid"><div class="card"><h3 data-bn="JobSphere Prep YouTube" data-en="JobSphere Prep on YouTube">JobSphere Prep YouTube</h3><p class="muted" data-bn="নতুন ক্লাস দেখতে আমাদের চ্যানেলে যান।" data-en="Visit our channel to watch the latest classes.">নতুন ক্লাস দেখতে আমাদের চ্যানেলে যান।</p><a href="https://youtube.com/@jobsphereprep" target="_blank"><button data-bn="সব ভিডিও দেখুন" data-en="Browse Videos">সব ভিডিও দেখুন</button></a></div><div class="card"><h3 data-bn="ভিডিওভিত্তিক পরীক্ষা" data-en="Video-based Tests">ভিডিওভিত্তিক পরীক্ষা</h3><p data-bn="প্রতিটি ভিডিওর জন্য আলাদা MCQ পরীক্ষা যোগ করা যাবে।" data-en="A separate MCQ test can be added for each video.">প্রতিটি ভিডিওর জন্য আলাদা MCQ পরীক্ষা যোগ করা যাবে।</p></div></div></section>
-<section id="test"><h2 data-bn="নমুনা মডেল টেস্ট" data-en="Sample Model Test">নমুনা মডেল টেস্ট</h2><p class="muted" data-bn="ডেমোতে ৩টি নমুনা প্রশ্ন আছে; পূর্ণ ৫০ প্রশ্নের পরীক্ষা এখনো যোগ করা হয়নি।" data-en="This demo has 3 sample questions; the full 50-question test has not been added yet.">ডেমোতে ৩টি নমুনা প্রশ্ন আছে; পূর্ণ ৫০ প্রশ্নের পরীক্ষা এখনো যোগ করা হয়নি।</p><div class="card"><div id="questions"></div><button id="submit" data-bn="পরীক্ষা জমা দিন" data-en="Submit Test">পরীক্ষা জমা দিন</button> <button id="reset" style="background:#475569" data-bn="আবার দিন" data-en="Try Again">আবার দিন</button><div id="result" class="result"></div></div></section></main><footer>© <span id="year"></span> JobSphere Prep</footer>
+<html lang="bn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#12213a">
+  <title>JobSphere Prep | BCS & Job Preparation</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, "Noto Sans Bengali", sans-serif;
+      background: #f4f7fb;
+      color: #182235;
+      line-height: 1.7;
+    }
+    header, footer {
+      background: #12213a;
+      color: white;
+      padding: 16px 5%;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .brand { font-size: 23px; font-weight: bold; }
+    button {
+      padding: 10px 15px;
+      border: 0;
+      border-radius: 9px;
+      cursor: pointer;
+      font: inherit;
+      background: #3157d5;
+      color: white;
+      font-weight: bold;
+    }
+    button:disabled { opacity: .6; cursor: not-allowed; }
+    .lang { background: white; color: #12213a; }
+    .hero {
+      background: linear-gradient(120deg, #12213a, #3157d5);
+      color: white;
+      padding: 38px 5%;
+    }
+    .hero-inner, main { max-width: 1000px; margin: auto; }
+    .hero h1 {
+      font-size: clamp(30px, 5vw, 48px);
+      line-height: 1.25;
+    }
+    .wrap { max-width: 1000px; margin: auto; padding: 24px 5%; }
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      margin: 16px 0;
+      box-shadow: 0 4px 20px #11224412;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+    }
+    .muted { color: #64748b; }
+    .question { padding: 15px 0; border-bottom: 1px solid #e4e9f2; }
+    .question label {
+      display: block;
+      padding: 7px 10px;
+      margin-top: 5px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .question label:hover { background: #f1f5ff; }
+    .question input { margin-right: 8px; }
+    .result {
+      display: none;
+      background: #e9f8f3;
+      padding: 16px;
+      border-radius: 10px;
+      margin-top: 16px;
+      overflow-wrap: anywhere;
+    }
+    .result-item { margin: 12px 0; padding-bottom: 10px; border-bottom: 1px solid #c8e7dc; }
+    a { color: inherit; }
+    .hero a { display: inline-block; margin: 4px 5px 4px 0; text-decoration: none; }
+    .status { padding: 12px; background: #eef2ff; border-radius: 8px; }
+    footer { text-align: center; margin-top: 20px; }
+    @media(max-width: 600px) {
+      .hero { padding: 24px 5%; }
+      .card { padding: 15px; }
+      .brand { font-size: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="brand">JobSphere Prep 🎓</div>
+  <button class="lang" id="lang" type="button">বাংলা | English</button>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <h1 data-bn="প্রস্তুতি হোক পরিকল্পিত, আত্মবিশ্বাস হোক দৃঢ়।"
+        data-en="Prepare with a plan. Build real confidence.">
+      প্রস্তুতি হোক পরিকল্পিত, আত্মবিশ্বাস হোক দৃঢ়।
+    </h1>
+    <p data-bn="BCS ও চাকরির পরীক্ষার ভিডিও ক্লাস, অনুশীলন এবং মডেল টেস্ট—এক জায়গায়।"
+       data-en="Video lessons, practice and model tests for BCS and job exams—all in one place.">
+      BCS ও চাকরির পরীক্ষার ভিডিও ক্লাস, অনুশীলন এবং মডেল টেস্ট—এক জায়গায়।
+    </p>
+    <a href="#test"><button data-bn="মডেল টেস্ট দিন" data-en="Take a Model Test">মডেল টেস্ট দিন</button></a>
+    <a href="https://youtube.com/@jobsphereprep" target="_blank" rel="noopener noreferrer">
+      <button data-bn="YouTube চ্যানেল" data-en="YouTube Channel">YouTube চ্যানেল</button>
+    </a>
+  </div>
+</section>
+
+<main class="wrap">
+  <section id="about">
+    <h2 data-bn="আমাদের সম্পর্কে" data-en="About Us">আমাদের সম্পর্কে</h2>
+    <p data-bn="JobSphere Prep হলো বিসিএস ও চাকরির পরীক্ষার্থীদের প্রস্তুতির জন্য একটি শিক্ষামূলক উদ্যোগ।"
+       data-en="JobSphere Prep supports candidates preparing for BCS and other competitive exams.">
+      JobSphere Prep হলো বিসিএস ও চাকরির পরীক্ষার্থীদের প্রস্তুতির জন্য একটি শিক্ষামূলক উদ্যোগ।
+    </p>
+  </section>
+
+  <section id="videos">
+    <h2 data-bn="ভিডিও ক্লাস" data-en="Video Classes">ভিডিও ক্লাস</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>JobSphere Prep YouTube</h3>
+        <p class="muted" data-bn="নতুন ক্লাস দেখতে আমাদের চ্যানেলে যান।"
+           data-en="Visit our channel to watch the latest classes.">
+          নতুন ক্লাস দেখতে আমাদের চ্যানেলে যান।
+        </p>
+        <a href="https://youtube.com/@jobsphereprep" target="_blank" rel="noopener noreferrer">
+          <button data-bn="সব ভিডিও দেখুন" data-en="Browse Videos">সব ভিডিও দেখুন</button>
+        </a>
+      </div>
+      <div class="card">
+        <h3 data-bn="ভিডিওভিত্তিক পরীক্ষা" data-en="Video-based Tests">ভিডিওভিত্তিক পরীক্ষা</h3>
+        <p data-bn="প্রশ্নগুলো questions.json ফাইলে যোগ করলে এখানে পরীক্ষা হিসেবে দেখা যাবে।"
+           data-en="Questions added to questions.json will appear here as a test.">
+          প্রশ্নগুলো questions.json ফাইলে যোগ করলে এখানে পরীক্ষা হিসেবে দেখা যাবে।
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="test">
+    <h2 data-bn="মডেল টেস্ট" data-en="Model Test">মডেল টেস্ট</h2>
+    <p class="muted" id="question-count">প্রশ্ন লোড হচ্ছে...</p>
+    <div class="card">
+      <div id="questions" class="status" aria-live="polite">প্রশ্ন লোড হচ্ছে...</div>
+      <p>
+        <button id="submit" type="button" data-bn="পরীক্ষা জমা দিন" data-en="Submit Test">পরীক্ষা জমা দিন</button>
+        <button id="reset" type="button" style="background:#475569"
+          data-bn="আবার দিন" data-en="Try Again">আবার দিন</button>
+      </p>
+      <div id="result" class="result" aria-live="polite"></div>
+    </div>
+  </section>
+</main>
+
+<footer>© <span id="year"></span> JobSphere Prep</footer>
+
 <script>
-const quiz=[
-{bn:"বাংলাদেশের সংবিধান কার্যকর হয় কবে?",en:"When did the Constitution of Bangladesh come into effect?",o:[["২৬ মার্চ ১৯৭১","26 March 1971"],["১৬ ডিসেম্বর ১৯৭২","16 December 1972"],["৭ মার্চ ১৯৭১","7 March 1971"],["১৬ ডিসেম্বর ১৯৭১","16 December 1971"]],a:1,eb:"বাংলাদেশের সংবিধান ১৬ ডিসেম্বর ১৯৭২ সালে কার্যকর হয়।",ee:"The Constitution of Bangladesh came into effect on 16 December 1972."},
-{bn:"জাতিসংঘ প্রতিষ্ঠিত হয় কত সালে?",en:"In which year was the United Nations established?",o:[["১৯১৯","1919"],["১৯৪৫","1945"],["১৯৪৭","1947"],["১৯৫২","1952"]],a:1,eb:"জাতিসংঘ ২৪ অক্টোবর ১৯৪৫ সালে প্রতিষ্ঠিত হয়।",ee:"The United Nations was established on 24 October 1945."},
-{bn:"আন্তর্জাতিক মাতৃভাষা দিবস কবে?",en:"When is International Mother Language Day?",o:[["২১ ফেব্রুয়ারি","21 February"],["২৬ মার্চ","26 March"],["১৬ ডিসেম্বর","16 December"],["১৪ এপ্রিল","14 April"]],a:0,eb:"২১ ফেব্রুয়ারি আন্তর্জাতিক মাতৃভাষা দিবস হিসেবে পালিত হয়।",ee:"International Mother Language Day is observed on 21 February."}
-];let L="bn";
-function render(){let root=document.getElementById("questions");root.innerHTML="";quiz.forEach((q,i)=>{let d=document.createElement("div");d.className="question";d.innerHTML="<strong>"+(i+1)+". "+q[L]+"</strong>";q.o.forEach((o,j)=>{d.innerHTML+=`<label><input type="radio" name="q${i}" value="${j}"> ${o[L==="bn"?0:1]}</label>`});root.appendChild(d)});document.getElementById("result").style.display="none"}
-document.getElementById("lang").onclick=()=>{L=L==="bn"?"en":"bn";document.querySelectorAll("[data-bn]").forEach(e=>e.textContent=e.dataset[L]);document.getElementById("lang").textContent=L==="bn"?"বাংলা | English":"English | বাংলা";render()};
-document.getElementById("submit").onclick=()=>{let score=0,details=[];quiz.forEach((q,i)=>{let v=document.querySelector(`input[name="q${i}"]:checked`);if(v&&+v.value===q.a)score++;details.push((i+1)+". "+(L==="bn"?"সঠিক উত্তর: ":"Correct answer: ")+q.o[q.a][L==="bn"?0:1]+" — "+(L==="bn"?q.eb:q.ee))});let r=document.getElementById("result");r.style.display="block";r.innerHTML=`<strong>${L==="bn"?"আপনার ফলাফল: ":"Your score: "}${score}/${quiz.length}</strong><p>${details.join("</p><p>")}</p>`};
-document.getElementById("reset").onclick=render;document.getElementById("year").textContent=new Date().getFullYear();render();
-</script></body></html>
+"use strict";
+
+let quiz = [];
+let L = "bn";
+let questionsLoaded = false;
+
+const $ = id => document.getElementById(id);
+
+function normalizeQuestion(q) {
+  const rawOptions = Array.isArray(q.o) ? q.o : (q.options || []);
+  const options = rawOptions.map(option => {
+    if (Array.isArray(option)) return option;
+    return [String(option), String(option)];
+  });
+
+  let answerIndex;
+  if (Number.isInteger(q.a)) {
+    answerIndex = q.a;
+  } else if (typeof q.answer === "number") {
+    answerIndex = q.answer;
+  } else {
+    answerIndex = (q.options || []).findIndex(
+      option => String(option) === String(q.answer)
+    );
+  }
+
+  const firstOption = options[0] || ["", ""];
+  const answerText = options[answerIndex] || firstOption;
+
+  return {
+    bn: q.bn || q.question || "",
+    en: q.en || q.question || "",
+    o: options,
+    a: answerIndex,
+    eb: q.eb || ("সঠিক উত্তর: " + answerText[0]),
+    ee: q.ee || ("Correct answer: " + answerText[1])
+  };
+}
+
+async function loadQuestions() {
+  const root = $("questions");
+  root.textContent = L === "bn" ? "প্রশ্ন লোড হচ্ছে..." : "Loading questions...";
+
+  try {
+    const response = await fetch("./questions.json");
+
+    if (!response.ok) {
+      throw new Error("Could not load questions.json");
+    }
+
+    const data = await response.json();
+
+    if (!data || !Array.isArray(data.questions)) {
+      throw new Error("Invalid questions format");
+    }
+
+    quiz = data.questions.map(normalizeQuestion).filter(q =>
+      q.bn &&
+      q.o.length > 0 &&
+      Number.isInteger(q.a) &&
+      q.a >= 0 &&
+      q.a < q.o.length
+    );
+
+    questionsLoaded = true;
+    render();
+  } catch (error) {
+    questionsLoaded = false;
+    root.textContent = L === "bn"
+      ? "প্রশ্ন লোড করা যায়নি। questions.json ফাইলের নাম, JSON ফরম্যাট এবং GitHub Pages প্রকাশনা পরীক্ষা করুন।"
+      : "Could not load questions. Check the questions.json filename, JSON format and GitHub Pages deployment.";
+    $("question-count").textContent = "";
+    $("submit").disabled = true;
+  }
+}
+
+function render() {
+  const root = $("questions");
+  root.innerHTML = "";
+  $("result").style.display = "none";
+
+  if (!questionsLoaded || quiz.length === 0) {
+    root.textContent = L === "bn"
+      ? "এখন কোনো বৈধ প্রশ্ন পাওয়া যায়নি।"
+      : "No valid questions were found.";
+    $("question-count").textContent = L === "bn"
+      ? "প্রশ্ন পাওয়া যায়নি"
+      : "No questions found";
+    $("submit").disabled = true;
+    return;
+  }
+
+  $("submit").disabled = false;
+  $("question-count").textContent = L === "bn"
+    ? "মোট প্রশ্ন: " + quiz.length
+    : "Total questions: " + quiz.length;
+
+  quiz.forEach((q, i) => {
+    const box = document.createElement("div");
+    box.className = "question";
+
+    const title = document.createElement("strong");
+    title.textContent = (i + 1) + ". " + (q[L] || q.bn);
+    box.appendChild(title);
+
+    q.o.forEach((option, j) => {
+      const label = document.createElement("label");
+      const input = document.createElement("input");
+      input.type = "radio";
+      input.name = "q" + i;
+      input.value = String(j);
+      label.appendChild(input);
+      label.appendChild(document.createTextNode(" " + (option[L === "bn" ? 0 : 1] || option[0])));
+      box.appendChild(label);
+    });
+
+    root.appendChild(box);
+  });
+}
+
+$("lang").addEventListener("click", () => {
+  L = L === "bn" ? "en" : "bn";
+  document.documentElement.lang = L;
+
+  document.querySelectorAll("[data-bn]").forEach(element => {
+    element.textContent = element.dataset[L];
+  });
+
+  $("lang").textContent = L === "bn" ? "বাংলা | English" : "English | বাংলা";
+  render();
+});
+
+$("submit").addEventListener("click", () => {
+  if (!questionsLoaded || quiz.length === 0) return;
+
+  let score = 0;
+  const result = $("result");
+  result.innerHTML = "";
+
+  quiz.forEach((q, i) => {
+    const selected = document.querySelector('input[name="q' + i + '"]:checked');
+    const isCorrect = selected && Number(selected.value) === q.a;
+
+    if (isCorrect) score++;
+
+    const item = document.createElement("div");
+    item.className = "result-item";
+
+    const heading = document.createElement("strong");
+    heading.textContent = (i + 1) + ". " +
+      (isCorrect
+        ? (L === "bn" ? "সঠিক উত্তর!" : "Correct!")
+        : (L === "bn" ? "ভুল বা উত্তর দেওয়া হয়নি" : "Incorrect or unanswered"));
+    item.appendChild(heading);
+
+    const answer = document.createElement("p");
+    answer.textContent = (L === "bn" ? "সঠিক উত্তর: " : "Correct answer: ") +
+      (q.o[q.a][L === "bn" ? 0 : 1] || q.o[q.a][0]);
+    item.appendChild(answer);
+
+    const explanation = document.createElement("p");
+    explanation.textContent = L === "bn" ? q.eb : q.ee;
+    item.appendChild(explanation);
+
+    result.appendChild(item);
+  });
+
+  const summary = document.createElement("h3");
+  summary.textContent = (L === "bn" ? "আপনার ফলাফল: " : "Your score: ") +
+    score + "/" + quiz.length;
+  result.prepend(summary);
+  result.style.display = "block";
+  result.scrollIntoView({ behavior: "smooth", block: "start" });
+});
+
+$("reset").addEventListener("click", () => {
+  render();
+  $("test").scrollIntoView({ behavior: "smooth", block: "start" });
+});
+
+$("year").textContent = new Date().getFullYear();
+loadQuestions();
+</script>
+</body>
+</html>
+
